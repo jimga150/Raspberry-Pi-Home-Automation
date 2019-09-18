@@ -1,0 +1,272 @@
+//http://compass-style.org/install/
+@import "../../../../../.rvm/gems/ruby-2.6.4/gems/compass-core-1.0.3/stylesheets/compass/css3";
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+@font-face {
+  font-family: 'ModernPictogramsNormal';
+  src: url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.eot");
+  src: url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.eot?#iefix") format("embedded-opentype"), url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.woff") format("woff"), url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.ttf") format("truetype"), url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.svg#ModernPictogramsNormal") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+$btn_length: 110px;
+$status_indicator_length: $btn_length;
+$glow_border_factor: 0.1;
+$status_inner_offset: 1-(2*$glow_border_factor);
+
+body {
+  margin: 0;
+  background-repeat: repeat;
+  background-image: url('../data/img/noise.png');
+  //background: black;
+  padding: 30px;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  letter-spacing: 0;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .1);
+  font-weight: bold;
+}
+
+td {
+  color: #AEAEAE;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
+  font-size: 14pt;
+}
+
+.Label{
+  padding-right: $btn_length*$glow_border_factor;
+}
+
+/* -------------------
+	Default State
+-------------------- */
+.glowBtn {
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  z-index: 10;
+  margin: 0 10px 10px 0;
+  width: $btn_length * 1.05;
+  height: $btn_length * 1.13;
+  line-height: $btn_length * 1.1;
+  position: relative;
+  font-size: $btn_length/3;
+  letter-spacing: 0;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .1);
+  font-weight: bold;
+  @include background-image(linear-gradient(#111, #000));
+  @include border-radius(3px);
+  @include box-shadow(
+    //-----Button Beveling-----
+    //top dark bevel
+                  0 -1px 0 rgba(0, 0, 0, .2),
+            //full bevel
+                  0 0 0 1px rgba(0, 0, 0, .3),
+            //bottom highlight bevel
+                  0 1px 0 rgba(255, 255, 255, .05),
+            //slight outer glow
+                  0 0 3px rgba(255, 255, 255, .2));
+}
+
+.Green {
+  color: #00c800;
+}
+
+.Red {
+  color: #c80000;
+}
+
+.LBlue {
+  color: #00c8c8;
+}
+
+//This is the style for the actual Button
+.glowBtn:after {
+  z-index: -1;
+  content: '';
+  cursor: pointer;
+  // center content
+  top: $btn_length * .06;
+  margin-left: 50%;
+  left: -$btn_length /2;
+  width: $btn_length;
+  height: $btn_length;
+  display: block;
+  position: absolute;
+  @include background-image(linear-gradient(#444, #373738));
+  @include box-shadow(
+                  inset 0 2px 1px -1px rgba(255, 255, 255, .2),
+                  inset 0 -2px 1px -1px rgba(0, 0, 0, .2),
+            //-----Drop Shadow-----
+                  0 12px 12px rgba(0, 0, 0, .5),
+                  0 4px 6px rgba(0, 0, 0, .3));
+  @include border-radius(2px);
+}
+
+/* -------------------
+	Hover States
+-------------------- */
+.glowBtn:hover {
+  //color: #AEAEAE;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
+}
+
+.glowBtn:hover:after {
+  @include background-image(linear-gradient(#545454, #373738));
+}
+
+/* -------------------
+	Active States
+-------------------- */
+.glowBtn:active {
+  color: #00ccff; //light blue
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .3), 0 0px 30px rgba(0, 255, 255, .7); //light blue
+  @include box-shadow(//light blue
+    //-----Button Beveling-----
+    //top dark bevel
+                  0 -1px 0 rgba(0, 193, 255, .2),
+            //full bevel
+                  0 0 0 1px rgba(0, 0, 0, .4),
+            //bottom highlight bevel
+                  0 1px 0 rgba(255, 255, 255, .05),
+            //slight outer glow
+                  0 0 20px rgba(0, 193, 255, .1),
+                  0 0 30px rgba(0, 193, 255, .1));
+}
+
+.Green:active {
+  color: #00c800;
+  //text-shadow:0 -1px 0 rgba(0,0,0,.3),0 0px 30px rgba(0,255,0,.7);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 1), 0 0px 30px rgba(0, 255, 0, 1), 0 0px 50px rgba(0, 255, 0, 1);
+  @include box-shadow(
+    //-----Button Beveling-----
+    //top dark bevel
+                  0 -1px 0 rgba(0, 255, 0, .2),
+            //full bevel
+                  0 0 0 1px rgba(0, 0, 0, .4),
+            //bottom highlight bevel
+                  0 1px 0 rgba(255, 255, 255, .05),
+            //slight outer glow
+                  0 0 20px rgba(0, 255, 0, .1),
+                  0 0 30px rgba(0, 255, 0, .1));
+}
+
+.Red:active {
+  color: #c80000;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .3), 0 0px 30px rgba(255, 0, 0, .7);
+  @include box-shadow(
+    //-----Button Beveling-----
+    //top dark bevel
+                  0 -1px 0 rgba(255, 0, 0, .2),
+            //full bevel
+                  0 0 0 1px rgba(0, 0, 0, .4),
+            //bottom highlight bevel
+                  0 1px 0 rgba(255, 255, 255, .05),
+            //slight outer glow
+                  0 0 20px rgba(255, 0, 0, .1),
+                  0 0 30px rgba(255, 0, 0, .1));
+}
+
+.glowBtn:active { //light blue
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 1), 0 0px 30px rgba(0, 255, 255, 1), 0 0px 50px rgba(0, 255, 255, 1);
+}
+
+.Green:active { //green
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 1), 0 0px 30px rgba(0, 255, 0, 1), 0 0px 50px rgba(0, 255, 0, 1);
+}
+
+.Red:active { //red
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 1), 0 0px 30px rgba(255, 0, 0, 1), 0 0px 50px rgba(255, 0, 0, 1);
+}
+
+.glowBtn:active:after {
+  @include background-image(linear-gradient(#262627, #2d2d2e));
+  @include box-shadow(
+                  inset 0 5px 6px rgba(0, 0, 0, .3),
+                  inset 0 0 4px rgba(0, 0, 0, .9), 0 0 0 black);
+}
+
+/* -------------------
+	SuperBtn
+-------------------- */
+
+.status {
+  display: block;
+  font-weight: bold;
+  letter-spacing: .08em;
+  width: $status_indicator_length*$status_inner_offset;
+  height: $status_indicator_length*$status_inner_offset;
+  top: $status_indicator_length*$glow_border_factor;
+  left: $status_indicator_length*$glow_border_factor;
+  line-height: $status_indicator_length*$status_inner_offset;
+  margin-bottom: $status_indicator_length*$glow_border_factor*2 + 10;
+  position: relative;
+  @include border-radius(30px);
+  @include box-shadow(
+                  inset 0 1px 0 rgba(255, 255, 255, .6),
+                  inset 0 -1px 0 rgba(0, 0, 0, .3),
+                  inset 0 0 0px 1px rgba(0, 0, 0, .1),
+                  0 0 1px rgba(0, 0, 0, .5),
+                  0 2px 2px rgba(0, 0, 0, .4)
+  );
+  color: #AEAEAE;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .8);
+  text-align: center;
+  @include background-image(linear-gradient(#545454, #373738));
+}
+
+.status:after {
+  width: $status_indicator_length;
+  height: $status_indicator_length;
+  top: -$status_indicator_length*$glow_border_factor;
+  left: -$status_indicator_length*$glow_border_factor;
+  content: '';
+  display: block;
+  @include border-radius(30px);
+  @include background-image(linear-gradient(#2af1fc, #17b2e6));
+  @include box-shadow(
+                  0 -1px 1px rgba(0, 0, 0, .7),
+                  0 1px 1px rgba(255, 255, 255, .4),
+                  0 0 1px 1px rgba(0, 0, 0, .3),
+                  inset 0 0px 3px rgba(0, 0, 0, .4),
+                  inset 0 1px 2px rgba(0, 0, 0, .6),
+                  0 0 15px 5px rgba(0, 255, 255, .2)
+  );
+  position: absolute;
+  z-index: -1;
+}
+
+.status_1:after{
+  @include background-image(linear-gradient(#00ff00, #00c800));
+  @include box-shadow(
+                  0 -1px 1px rgba(0, 0, 0, .7),
+                  0 1px 1px rgba(255, 255, 255, .4),
+                  0 0 1px 1px rgba(0, 0, 0, .3),
+                  inset 0 0px 3px rgba(0, 0, 0, .4),
+                  inset 0 1px 2px rgba(0, 0, 0, .6),
+                  0 0 15px 5px rgba(0, 200, 0, .2)
+  );
+}
+
+.status_0:after{
+  @include background-image(linear-gradient(#ff0000, #c80000));
+  @include box-shadow(
+                  0 -1px 1px rgba(0, 0, 0, .7),
+                  0 1px 1px rgba(255, 255, 255, .4),
+                  0 0 1px 1px rgba(0, 0, 0, .3),
+                  inset 0 0px 3px rgba(0, 0, 0, .4),
+                  inset 0 1px 2px rgba(0, 0, 0, .6),
+                  0 0 15px 5px rgba(200, 0, 0, .2)
+  );
+}
+
+/* https://codepen.io/wallas/pen/lFABr?editors=1100*/
