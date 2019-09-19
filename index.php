@@ -88,7 +88,7 @@ class Panel
         $inactive = $polarity == 1 ? "0" : "1";
         return "gpio mode " . $pin . " out; " .
             "gpio write " . $pin . " " . $inactive . "; " .
-            "sleep " . strval($pulse_length_s) . "; " .
+            "sleep 0.01; " .
             "gpio write " . $pin . " " . $active . "; " .
             "sleep " . strval($pulse_length_s) . "; " .
             "gpio write " . $pin . " " . $inactive;
