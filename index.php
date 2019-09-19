@@ -16,12 +16,13 @@ include "panels.php";
 // Define your username and password
 $username = "Jim Landing St";
 $password = "$=:6;Cl.a<%C>'l";
+$logged_in = false;
 
 if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) {
     ?>
     <h1>Login</h1>
     <form name="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <p> //TODO: fix Javascript error by checking for a login element and halting if found
+        <p>
             <label for="txtUsername">Username:</label>
             <br>
             <input type="text" title="Enter your Username" name="txtUsername"/>
@@ -35,6 +36,7 @@ if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) {
     </form>
     <?php
 } else {//here begins the page loaded after the login is achieved
+    $logged_in = true;
     $return = 0;
     $output = "";
     echo("<div><table>");
@@ -66,7 +68,7 @@ if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) {
 
 <script>
     <?php
-
+    if ($logged_in){
     for ($i = 0; $i < $num_panels; $i++) {
         if ($panels[$i]->changeable == 1) {
             echo("let on_button_" . $i . " = document.getElementById(\"panel_" . $i . "_on\");\n\t");
@@ -97,6 +99,9 @@ if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) {
             }
         };
     }
+    <?php
+    }
+    ?>
 </script>
 
 </body>
