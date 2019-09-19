@@ -1,4 +1,5 @@
 <?php
+include "panels.php";
 
 $lock_filename = "picontrol.lock";
 
@@ -15,12 +16,24 @@ if (!$lock_file_handle = fopen($lock_filename, "w+")){
     exit();
 }
 
-if (!isset($_POST["cmd"])) {
-    echo json_encode("Failure - no command provided");
+if (!isset($_POST["panel_id"])) {
+    echo json_encode("Failure - no panel ID provided");
     exit();
 }
+$panel_index = strip_tags($_POST["panel_id"]);
 
-$cmd = strip_tags($_POST["cmd"]);
+if (!isset($_POST["cmd_type"])) {
+    echo json_encode("Failure - no command type provided");
+    exit();
+}
+$cmd_type = strip_tags($_POST["cmd_type"]);
+
+$cmd = "false";
+if ($cmd_type == Panel::cmd_read){
+    $cmd = $panels[$panel_index]->read_command;
+} else {
+    $cmd = $panels[$panel_index]->state_change_cmds[$cmd_type];
+}
 
 exec($cmd, $output, $return);
 
