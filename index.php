@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="stylesheets/fancythings.css">
     <meta name="mobile-web-app-capable" content="yes"/>
-    <meta name="theme-color" content="#F00BA4"/>
+    <meta name="theme-color" content="#3f3f3f"/>
 </head>
 <body width="1280" ontouchstart=""> <!--https://stackoverflow.com/questions/27955077/html-mobile-buttons-display-->
 <?php
