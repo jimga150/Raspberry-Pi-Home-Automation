@@ -65,18 +65,14 @@ if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) {
 ?>
 
 <script>
-
-    // noinspection JSAnnotator
-    //const num_panels = <?=$num_panels?>;
-
     <?php
 
     for ($i = 0; $i < $num_panels; $i++) {
         if ($panels[$i]->changeable == 1) {
             echo("let on_button_" . $i . " = document.getElementById(\"panel_" . $i . "_on\");\n\t");
             echo("let off_button_" . $i . " = document.getElementById(\"panel_" . $i . "_off\");\n\t");
-            echo("on_button_" . $i . ".addEventListener(\"click\", send_cmd.bind(null, \"".$panels[$i]->state_change_cmds[Panel::state_0_to_1]."\"));\n\t");
-            echo("off_button_" . $i . ".addEventListener(\"click\", send_cmd.bind(null, \"".$panels[$i]->state_change_cmds[Panel::state_1_to_0]."\"));\n\t");
+            echo("on_button_" . $i . ".addEventListener(\"click\", send_cmd.bind(null, \"" . $i . "\", \"" . Panel::cmd_state_0_to_1 . "\"));\n\t");
+            echo("off_button_" . $i . ".addEventListener(\"click\", send_cmd.bind(null, \"" . $i . "\", \"" . Panel::cmd_state_1_to_0 . "\"));\n\t");
         }
         if ($panels[$i]->readable) {
             echo("let status_text_" . $i . " = document.getElementById(\"status_" . $i . "\");");
