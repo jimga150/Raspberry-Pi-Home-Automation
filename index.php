@@ -21,7 +21,7 @@ if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) {
     ?>
     <h1>Login</h1>
     <form name="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <p>
+        <p> //TODO: fix Javascript error by checking for a login element and halting if found
             <label for="txtUsername">Username:</label>
             <br>
             <input type="text" title="Enter your Username" name="txtUsername"/>
