@@ -35,11 +35,14 @@ if ($cmd_type == Panel::cmd_read) {
     $cmd = $panels[$panel_index]->state_change_cmds[$cmd_type];
 }
 
-exec($cmd, $output, $return);
+exec($cmd." 2>&1", $output, $return);
 
 $response = "Failure";
 if ($return != 0) {
-    $response = "Failure - command exited with non-zero status. Output: " . $output;
+    $response = "Failure - command exited with non-zero status. Output (".count($output)." lines): ";
+    for ($i = 0; $i < count($output); $i++){
+        $response .= $output[$i];
+    }
 } else {
     $response = $output;
 }
