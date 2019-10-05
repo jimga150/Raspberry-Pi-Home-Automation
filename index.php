@@ -92,7 +92,12 @@ if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) {
                 if (request.responseText.includes("Fail")) {
                     console.log(request.responseText);
                 } else {
-                    console.log(request.responseText);
+                    if (request.responseText === "[]"){
+                        console.log("Command Success, no output");
+                    } else {
+                        console.log(request.responseText);
+                    }
+
                 }
             } else if (request.readyState === 4 && request.status === 500) {
                 console.log("Fail - Server Error");
