@@ -99,14 +99,7 @@ $panels = array(
             Panel::gpio_cmd(3, Panel::GPIO_WRITE_CMD, Panel::cmd_state_0_to_1, true, 0),
             Panel::gpio_cmd(4, Panel::GPIO_WRITE_CMD, Panel::cmd_state_1_to_0, true, 0)
         )
-    ),
-    Panel::makePanelChangeOnly(
-        "Geb",
-        array(
-            "python /home/jim/servo.py 1",
-            "ls -la /usr/bin/python2.7"
-        )
-    ),
+    )
 );
 
 $num_panels = count($panels);
