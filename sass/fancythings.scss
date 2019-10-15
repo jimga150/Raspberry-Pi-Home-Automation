@@ -5,13 +5,15 @@
 @font-face {
   font-family: 'ModernPictogramsNormal';
   src: url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.eot");
-  src: url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.eot?#iefix") format("embedded-opentype"), url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.woff") format("woff"), url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.ttf") format("truetype"), url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.svg#ModernPictogramsNormal") format("svg");
+  src: url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.eot?#iefix") format("embedded-opentype"),
+  url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.woff") format("woff"),
+  url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.ttf") format("truetype"),
+  url("http://s202540075.onlinehome.us/codepen/fonts/modernpics-webfont.svg#ModernPictogramsNormal") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-$btn_length: 110px;
-$status_indicator_length: $btn_length;
+$btn_length: 20vw; //1vw = 1% of view width
 $glow_border_factor: 0.1;
 $status_inner_offset: 1-(2*$glow_border_factor);
 
@@ -19,8 +21,8 @@ body {
   margin: 0;
   background-repeat: repeat;
   background-image: url('../data/img/noise.png');
-  //background: black;
-  padding: 30px;
+  //background: brown;
+  padding: 0.27*$btn_length;
 
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -33,8 +35,12 @@ body {
   font-weight: bold;
   color: #AEAEAE;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
-  font-size: 14pt;
+  font-size: 0.1727*$btn_length;
 }
+
+/*table {
+  background: #00c8c8;
+}*/
 
 .Label{
   padding-right: $btn_length*$glow_border_factor;
@@ -199,12 +205,12 @@ body {
   display: block;
   font-weight: bold;
   letter-spacing: .08em;
-  width: $status_indicator_length*$status_inner_offset;
-  height: $status_indicator_length*$status_inner_offset;
-  top: $status_indicator_length*$glow_border_factor;
-  left: $status_indicator_length*$glow_border_factor;
-  line-height: $status_indicator_length*$status_inner_offset;
-  margin-bottom: $status_indicator_length*$glow_border_factor*2 + 10;
+  width: $btn_length*$status_inner_offset;
+  height: $btn_length*$status_inner_offset;
+  top: $btn_length*$glow_border_factor;
+  left: $btn_length*$glow_border_factor;
+  line-height: $btn_length*$status_inner_offset;
+  margin-bottom: $btn_length*$glow_border_factor*2.5;
   position: relative;
   @include border-radius(30px);
   @include box-shadow(
@@ -221,10 +227,10 @@ body {
 }
 
 .status:after {
-  width: $status_indicator_length;
-  height: $status_indicator_length;
-  top: -$status_indicator_length*$glow_border_factor;
-  left: -$status_indicator_length*$glow_border_factor;
+  width: $btn_length;
+  height: $btn_length;
+  top: -$btn_length*$glow_border_factor;
+  left: -$btn_length*$glow_border_factor;
   content: '';
   display: block;
   @include border-radius(30px);
