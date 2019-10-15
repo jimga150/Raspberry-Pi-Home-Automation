@@ -14,8 +14,8 @@
 include "panels.php";
 
 // Define your username and password
-$username = "Jim Landing St";
-$password = "$=:6;Cl.a<%C>'l";
+$username = "Landing St";
+$password = "EU@F*%Rz4D'q{6tR";
 $logged_in = false;
 
 if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) {
