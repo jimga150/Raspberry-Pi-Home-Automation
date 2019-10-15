@@ -9,7 +9,8 @@
     <meta name="mobile-web-app-capable" content="yes"/>
     <meta name="theme-color" content="#3f3f3f"/>
 </head>
-<body width="1280" ontouchstart=""> <!--https://stackoverflow.com/questions/27955077/html-mobile-buttons-display-->
+<body ontouchstart="" id="site-body" > <!--onresize="resized()" onload="resized()"-->
+<!--https://stackoverflow.com/questions/27955077/html-mobile-buttons-display-->
 <?php
 include "panels.php";
 
@@ -67,6 +68,20 @@ if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) {
 ?>
 
 <script>
+
+    /*function resized() {
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        let body = document.getElementById('site-body');
+        if (w > h){ //screen is wider than it is tall
+            console.log('wide screen');
+            body.setAttribute('width', (h/2).toString());
+        } else if (body.hasAttribute('width')){
+            console.log('tall screen');
+            body.removeAttribute('width')
+        }
+    }*/
+
     <?php
     if ($logged_in){
     for ($i = 0; $i < $num_panels; $i++) {
@@ -92,7 +107,7 @@ if ($_POST['txtUsername'] != $username || $_POST['txtPassword'] != $password) {
                 if (request.responseText.includes("Fail")) {
                     console.log(request.responseText);
                 } else {
-                    if (request.responseText === "[]"){
+                    if (request.responseText === "[]") {
                         console.log("Command Success, no output");
                     } else {
                         console.log(request.responseText);

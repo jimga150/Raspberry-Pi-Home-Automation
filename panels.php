@@ -94,7 +94,7 @@ $panels = array(
     ),
     Panel::makePanelReadOnly("Front door", "echo 0", "Open", "Closed"),
     Panel::makePanelChangeOnly(
-        "Living Room Light",
+        "Living Room Lights",
         array(
             Panel::gpio_cmd(3, Panel::GPIO_WRITE_CMD, Panel::cmd_state_0_to_1, true, 0),
             Panel::gpio_cmd(4, Panel::GPIO_WRITE_CMD, Panel::cmd_state_1_to_0, true, 0)
